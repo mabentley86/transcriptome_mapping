@@ -18,6 +18,15 @@ HISAT2 is a fast and sensitive alignment program for mapping next-generation seq
 
 ### Build hisat2 genome index.
 
+Before mapping reads to the reference genome, we need to build a genome index. If the genome is annotated, we can use a GTF file to extract the locations of exons and introns. We run:
+
+```
+hisat2_extract_splice_sites.py genome.gtf > genome.ss
+hisat2_extract_exons.py genome.gtf > genome.exon
+```
+
+We can then build the index using the files by running:
+
 ```
 hisat2-build --ss genome_splice_sites.ss --exon genome_exons.exon genome.fasta genome
 ```
