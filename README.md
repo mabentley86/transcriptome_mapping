@@ -4,6 +4,15 @@ A pipeline for mapping the transcriptome to a reference genome.
 ## gffutilities [(Manual)](http://ccb.jhu.edu/software/stringtie/gff.shtml)
 The gffutilities page contains tools to manipulate GTF and GFF files. It contains two useful programs: 1) [gffreads](https://github.com/gpertea/gffread), which can be used to validate, filter, convert and perform various other operations on GFF files; and 2) [gffcompare](https://github.com/gpertea/gffcompare), which can be used to compare, merge, annotate and estimate accuracy of one or more GFF files.
 
+If we have an annotate reference genome available, it will often be accompanied with a GFF3 file, containing information about specific regions of the genome with respect to CDS, exons, and such like. We can convert this to a GTF file, containing information about CDS, exons and such like with respect to specific regions of the genome. If we want to use hisat2 to perform read mapping, we need to convert from GFF3 to GTF. To do this, we use the command:
+
+```
+gffread genome.gff3 -T -o genome.gtf
+```
+
+The argument -T specifies output is in GTF format. 
+
+
 ## HISAT2 [(Manual)](https://ccb.jhu.edu/software/hisat2/manual.shtml)
 HISAT2 is a fast and sensitive alignment program for mapping next-generation sequencing reads (whole-genome, transcriptome, and exome sequencing data) against the general human population (as well as against a single reference genome). 
 
